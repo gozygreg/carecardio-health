@@ -11,6 +11,18 @@ def contact_us(request):
         client_email = request.POST['email']
         client_phone = request.POST['phone']
         client_message = request.POST['message']
-        return render(request, 'home/contact_us.html', {'client_name':client_name})
+        return render(request, 'home/contact_us.html', {'client_name': client_name})
     else:
         return render(request, 'home/contact_us.html', {})
+
+
+def about_us(request):
+    return render(request, 'home/about_us.html', {})
+
+
+def services(request):
+    return render(request, 'home/services.html', {})
+
+
+def blog(request):
+    return render(request, 'home/blog.html', {})
