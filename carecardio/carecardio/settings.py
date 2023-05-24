@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'appointments',
 ]
 
 MIDDLEWARE = [
@@ -56,9 +57,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://example.com',
-    'http://localhost:8000',
-    'https://8000-gozygreg-carecardioheal-t85oebz8h7b.ws-eu97.gitpod.io'
+    'https://8000-gozygreg-carecardioheal-f0u9joxr52c.ws-eu97.gitpod.io'
 ]
 
 ROOT_URLCONF = 'carecardio.urls'
