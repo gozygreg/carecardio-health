@@ -27,6 +27,6 @@ def appointments_list(request):
 
 
 @login_required
-def available_doctors(request):
+def available_clinician(request):
     doctors = Clinician.objects.all()
     return render(request, 'appointments/available_doctors.html', {'clinician': clinician})
