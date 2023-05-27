@@ -1,0 +1,14 @@
+Copy code
+vscode:
+  extensions:
+    - esbenp.prettier-vscode
+    - ms-python.python
+    - dbaeumer.vscode-eslint
+
+tasks:
+  - name: Install Django and allauth
+    init: |
+      pip install Django allauth
+
+  - name: Start Django server
+    command: carecardio

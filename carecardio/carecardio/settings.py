@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-gozygreg-carecardioheal-f0u9joxr52c.ws-eu97.gitpod.io'
+    'https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu98.gitpod.io'
 ]
 
 ROOT_URLCONF = 'carecardio.urls'
