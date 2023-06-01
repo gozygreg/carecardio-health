@@ -10,7 +10,7 @@ class ClincianAdmin(admin.ModelAdmin):
 
 class PatientAdmin(admin.ModelAdmin):
     list_display = (
-        'user',
+        'name',
     )
 
 

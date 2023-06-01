@@ -11,11 +11,11 @@ class Clincian(models.Model):
 
 
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100, default=None)
     # Add more fields as per your requirements
 
     def __str__(self):
-        return self.user.username
+        return self.name
 
 
 class Appointment(models.Model):
