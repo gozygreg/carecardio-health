@@ -20,10 +20,24 @@ def schedule_appointment(request):
 
 
 # @login_required
-def appointments_list(request):
-    # appointments = Appointment.objects.filter(patient=request.user.patient)
-    # return render(request, 'appointments/appointments_list.html', {'appointments': appointments})
-    return render(request, 'appointments/appointments_list.html')
+def appointment(request):
+    if request.method == 'POST':
+        message_name = request.POST['message-name']
+        message_email = request.POST['message-email']
+        message = request.POST['message']
+
+        # send email
+        send_email(
+            message_name,
+            message,
+            message_email,
+            ['goziennabuife@yahoo.com'],
+        )
+
+        return render(request, 'appointment.html', {})
+
+    else:
+        return render(request, 'home.html')
 
 
 # @login_required

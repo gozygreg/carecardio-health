@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.mail import send_mail
 
 
 def home(request):
@@ -11,6 +12,16 @@ def contact_us(request):
         client_email = request.POST['email']
         client_phone = request.POST['phone']
         client_message = request.POST['message']
+
+        # send email
+        send_email(
+            message_name,  # subject
+            message,  # message
+            message_email,  # from email
+            ['greg.nnabuife.code@gmail.com'],  # to email
+            fail_silently=False
+        )
+
         return render(request, 'home/contact_us.html', {'client_name': client_name})
     else:
         return render(request, 'home/contact_us.html', {})

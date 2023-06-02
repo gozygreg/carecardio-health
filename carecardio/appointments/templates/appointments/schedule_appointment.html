@@ -20,9 +20,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 txtr">
-                <form method="post">
+                <form action="{% url 'appointment' %}" method="post">
                     {% csrf_token %}
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="{{ form.clinician.id_for_label }}">Select Clinician:</label>
                       {{ form.clinician }}
                     </div>
@@ -38,7 +38,34 @@
                       <label for="{{ form.time.id_for_label }}">Time:</label>
                       {{ form.time }}
                     </div>
-                    <button type="submit" class="btn btn-info">Schedule Appointment</button>
+                    <button type="submit" class="btn btn-info">Schedule Appointment</button> -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-30">
+                                <input type="text" name="your-name" class="form-control" placeholder="your-name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-30">
+                                <input type="text" name="your-phone" class="form-control" placeholder="your-phone" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-30">
+                                <input type="email" name="your-email" class="form-control" placeholder="your-email" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-30">
+                                <input type="text" name="your-name" class="form-control" placeholder="your-name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-30">
+                                <input type="text" name="your-name" class="form-control" placeholder="your-name" required>
+                            </div>
+                        </div>
+                    </div>
                   </form>
             </div>   
             <div class="col-lg-6 col-md-12">
