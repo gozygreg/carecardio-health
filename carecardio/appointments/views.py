@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from .forms import AppointmentForm
 from .models import Clincian, Appointment
 
@@ -29,6 +30,18 @@ def appointment(request):
         your_schedule = request.POST['your-schedule']
         your_date = request.POST['your-date']
         your_message = request.POST['your-message']
+
+        # send an email
+        appointment = "Name: " + your_name + " Phone: " + your_phone + " Email: " + your_email + " Address: " + \
+            your_address + " Schedule: " + your_schedule + \
+            "Day : " + your_date + "Message: " + your_message
+
+        send_mail(
+            'Appointment Request',
+            appointment,  # message
+            your_email,  # from email
+            ['gregmeditechinc@gmail.com'],  # to email
+        )
 
         return render(request, 'appointments/appointment.html', {
             'your_name': your_name,

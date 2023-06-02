@@ -19,15 +19,17 @@
 <section class="with-medical">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-12 txtr">
-                <h1>Appointment Booked successfully!</h1>
-                <h3>Hi {{ your_name }}, please review your information</h3>
-                <p>Email: {{ your_email }}</p>
-                <p>Phone Number: {{ your_phone }}</p>
-                <p>Address: {{ your_address }}</p>
-                <p>Schedule: {{ your_schedule }}</p>
-                <p>Date: {{ your_date }}</p>
-                <p>Message: {{ your_message }}</p>
+            <div class="col-lg-6 col-md-12 txtr text-left">
+                <h3>Review Your Information</h3>
+                <p><strong>Your Name:</strong> {{ your_name }}</p>
+                <p><strong>Email:</strong> {{ your_email }}</p>
+                <p><strong>Phone Number:</strong> {{ your_phone }}</p>
+                <p><strong>Address: </strong>{{ your_address }}</p>
+                <p><strong>When: </strong>: {{ your_schedule }}</p>
+                <p><strong>Appointment Day: </strong> {{ your_date }}</p>
+                <p><strong>Your Message:</strong> {{ your_message }}</p>
+                <br>
+                <p>We will contact your shortly to confirm yout appointment</p>
             </div>   
             <div class="col-lg-6 col-md-12">
                 <img src="{% static 'home/images/why.jpg' %}" alt="">
