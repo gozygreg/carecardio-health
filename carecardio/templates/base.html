@@ -14,6 +14,19 @@
     <link rel="stylesheet" href="{% static 'home/css/fontawsom-all.min.css' %}">
     <link rel="stylesheet" href="{% static 'home/css/animate.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}" />
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <!-- Bootsrap Js -->
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 </head>
 
 <body>
@@ -71,7 +84,15 @@
     </header>
 
     {% if messages %}
-    <div class="message-container"></div>
+    <div class="message-container">
+        {% for message in messages %}
+        <div class="toast">
+            <div class="toast-body">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block page_header %}
@@ -80,8 +101,7 @@
     {% block content %}
     {% endblock %}
 
-    {% block postloadjs %}
-    {% endblock %}
+
 
 
 </body>
@@ -149,5 +169,11 @@
 <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'home/plugins/scroll-fixed/jquery-scrolltofixed-min.js' %}"></script>
 <script src="{% static 'home/js/script.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('.toast').toast('show');
+    });
+    </script>
+
 
 </html>

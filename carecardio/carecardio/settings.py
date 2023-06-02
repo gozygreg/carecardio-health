@@ -24,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7eof0*fu&oie9^l-%u31-=d7jyta1agc(8t1o=zb2uqqd=z310'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu98.gitpod.io'
+    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu98.gitpod.io', 'localhost'
 ]
 
 
@@ -158,12 +159,17 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-EMAIL_HOST = 'smpt.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'greg.nnabuife.code@gmail.com'
-EMAIL_HOST_PASSWORD = 'password'
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'carecardio@example.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

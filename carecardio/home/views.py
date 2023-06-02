@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.contrib import messages
 
 
 def home(request):
@@ -14,15 +15,20 @@ def contact_us(request):
         client_message = request.POST['message']
 
         # send email
-        send_email(
-            message_name,  # subject
-            message,  # message
-            message_email,  # from email
-            ['greg.nnabuife.code@gmail.com'],  # to email
+        send_mail(
+            client_name,  # subject
+            client_message,  # message
+            client_email,  # from email
+            ['gregmeditechinc@gmail.com'],  # to email
             fail_silently=False
         )
 
-        return render(request, 'home/contact_us.html', {'client_name': client_name})
+        # Add success message
+        messages.success(
+            request, 'Thank you, Your email sent successfully! We will get back to you shortly')
+        return redirect('about_us.html')
+
+        # return render(request, 'home/contact_us.html', {'client_name': client_name})
     else:
         return render(request, 'home/contact_us.html', {})
 
