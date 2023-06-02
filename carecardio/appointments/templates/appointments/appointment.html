@@ -5,7 +5,7 @@
 <div class="page-nav no-margin row">
     <div class="container">
         <div class="row">
-            <h2>Appointment List</h2>
+            <h2>Appointment</h2>
             <ul>
                 <li> <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
                 <li><i class="fas fa-angle-double-right"></i> Your appointment has been created successfully</li>
@@ -20,7 +20,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-12 txtr">
-                
+                <h1>Appointment Booked successfully!</h1>
+                <h3>Hi {{ your_name }}, please review your information</h3>
+                <p>Email: {{ your_email }}</p>
+                <p>Phone Number: {{ your_phone }}</p>
+                <p>Address: {{ your_address }}</p>
+                <p>Schedule: {{ your_schedule }}</p>
+                <p>Date: {{ your_date }}</p>
+                <p>Message: {{ your_message }}</p>
             </div>   
             <div class="col-lg-6 col-md-12">
                 <img src="{% static 'home/images/why.jpg' %}" alt="">
