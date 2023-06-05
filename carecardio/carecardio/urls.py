@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('appointments/', include('appointments.urls')),
+    path('carecardioblog/', include('carecardioblog.urls')),
 ]

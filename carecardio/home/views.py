@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 
+from carecardioblog.models import Post
+from carecardioblog.forms import PostForm
+
 
 def home(request):
     return render(request, 'home/index.html', {})
@@ -41,5 +44,10 @@ def services(request):
     return render(request, 'home/services.html', {})
 
 
-def blog(request):
-    return render(request, 'home/blog.html', {})
+# def blog(request):
+#     return render(request, 'home/blog_list.html', {})
+
+
+def post_list(request):
+    posts = Post.objects.all()
+    return render(request, 'home/blog_list.html', {'posts': posts})

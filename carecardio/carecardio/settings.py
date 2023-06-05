@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,8 +48,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary_storage',
     'home',
     'appointments',
+    'carecardioblog',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +154,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+# configure cloudinary settings
+cloudinary.config(
+    cloud_name='dezgpatyj',
+    api_key='598943221384968',
+    api_secret='A-zrkiAa9WvEd7XjtK_LUqDwXmo'
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

@@ -19,7 +19,7 @@
          
       
     <!-- ################# Our Blog Starts Here#######################--->
-
+	{% for post in posts %}
     <section class="our-blog">
          	<div class="container">
          		<div class="row session-title">
@@ -34,13 +34,13 @@
         					</figure>
         					<div class="blog-detail">
         						<small>By Admin | August 10 2018</small>
-								<h4>Methods of Recuirtments</h4>
-								<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam justo neque, aliquet sit amet elementum vel, vehicula eget eros. Vivamus arcu metus, mattis sed sagittis at, sagittis quis neque. Praesent.</p>
+								<h4>{{post.title}}</h4>
+								<p>{{post.content}}</p>
 								<div class="link">
 									<a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
 								</div>
         					</div>
-        					
+        					{% endfor %}
         					
         				</div>
         			</div>
@@ -135,6 +135,13 @@
 
     <!-- ################# Footer Starts Here#######################--->
 
-
+	<h1>Blog List</h1>
+	{% for post in posts %}
+<li>{{post.title}}</li>
+<li>{{post.image}}</li>
+<li>{{post.created_at}}</li>
+<li>{{post.content}}</li>
+<li>{{post.title}}</li>
+{% endfor %}
   
         {% endblock %}
