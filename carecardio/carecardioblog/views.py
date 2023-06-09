@@ -4,5 +4,5 @@ from .forms import PostForm
 
 
 def post_list(request):
-    # posts = Post.objects.all()
+    posts = Post.objects.all()
     return render(request, 'carecardioblog/blog.html', {})

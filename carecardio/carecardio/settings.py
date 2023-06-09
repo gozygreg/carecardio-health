@@ -30,10 +30,13 @@ SECRET_KEY = 'django-insecure-7eof0*fu&oie9^l-%u31-=d7jyta1agc(8t1o=zb2uqqd=z310
 DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu98.gitpod.io', 'localhost'
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu99.gitpod.io',
 ]
 
+ALLOWED_HOSTS = [
+    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu99.gitpod.io',
+]
 
 # Application definition
 
@@ -49,12 +52,14 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'cloudinary_storage',
+    'corsheaders',
     'home',
     'appointments',
     'carecardioblog',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,9 +69,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu98.gitpod.io'
-]
 
 ROOT_URLCONF = 'carecardio.urls'
 
