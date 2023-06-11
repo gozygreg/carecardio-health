@@ -6,10 +6,10 @@
    <div class="page-nav no-margin row">
        <div class="container">
            <div class="row">
-               <h2>Our Services</h2>
+               <h2>Our Blog</h2>
                <ul>
                    <li> <a href="#"><i class="fas fa-home"></i> Home</a></li>
-                   <li><i class="fas fa-angle-double-right"></i> Our Services</li>
+                   <li><i class="fas fa-angle-double-right"></i> Our Blog</li>
                </ul>
            </div>
        </div>
@@ -34,8 +34,8 @@
                        <div class="blog-detail">
                            <small>By Admin | August 10 2018</small>
                            <h4>{{ post.title }}</h4>
-                           <div class="link">
-                               <a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
+                           <div>
+                               <a href="{% url 'blog_detail' post.pk %}">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
                            </div>
                            <h5>{{ post.created_at }}</h5>
                        </div>
