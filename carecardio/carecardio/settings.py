@@ -31,11 +31,11 @@ DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu99.gitpod.io',
+    'https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu100.gitpod.io',
 ]
 
 ALLOWED_HOSTS = [
-    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu99.gitpod.io',
+    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu100.gitpod.io',
 ]
 
 # Application definition
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'cloudinary_storage',
+    'django_summernote',
     'corsheaders',
     'home',
     'appointments',
@@ -71,6 +72,7 @@ MIDDLEWARE = [
 
 
 ROOT_URLCONF = 'carecardio.urls'
+
 
 TEMPLATES = [
     {
