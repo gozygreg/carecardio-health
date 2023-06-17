@@ -10,5 +10,6 @@ def post_list(request):
 
 def blog_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    category = get_object_or_404(Category, pk=pk)
-    return render(request, 'home/blog_detail.html', {'post': post, 'category': category})
+    recent_posts = Post.objects.exclude(pk=pk).order_by('-created_at')[:5]
+    categories = Category.objects.all()
+    return render(request, 'home/blog_detail.html', {'post': post, 'recent_posts': recent_posts, 'categories': categories})
