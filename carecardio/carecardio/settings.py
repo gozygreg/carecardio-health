@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 ALLOWED_HOSTS = [
-    '8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu100.gitpod.io',
+    '8000-gozygreg-carecardioheal-k6t3j4ki7sc.ws-eu100.gitpod.io',
 ]
 
 # Application definition
