@@ -236,13 +236,13 @@ header {
 
 /* ===================================== Slider CSS ================================== */
 .slider-detail {
-  padding-top: 128px; }
+  padding-top: 90px; }
   @media screen and (max-width: 767px) {
     .slider-detail {
-      padding-top: 115px; } }
+      padding-top: 91px; } }
   @media screen and (max-width: 409px) {
     .slider-detail {
-      padding-top: 158px; } }
+      padding-top: 91px; } }
   .slider-detail .carousel-caption {
     text-align: left;
     bottom: 110px; }
@@ -419,10 +419,10 @@ header {
 .page-nav {
   padding: 40px;
   text-align: center;
-  padding-top: 170px; }
+  padding-top: 120px; }
   @media screen and (max-width: 409px) {
     .page-nav {
-      padding-top: 210px; } }
+      padding-top: 120px; } }
   .page-nav h2 {
     font-size: 36px;
     width: 100%;
