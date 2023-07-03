@@ -380,7 +380,7 @@ header {
 .footer {
   padding: 50px;
   padding-bottom: 0px;
-  background-color: #444;
+  background-color: #400099;
   color: #FFF; }
   @media screen and (max-width: 940px) {
     .footer {

@@ -33,32 +33,14 @@
 
     <!-- ################# Header Starts Here#######################--->
     <header>
-        <div class="header-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7 col-md-12 left-item">
-                        <ul>
-                            <li><i class="fas fa-envelope-square"></i> sales@smarteyeapps.com</li>
-                            <li><i class="fas fa-phone-square"></i> +123 987 887 765</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-block right-item">
-                        <ul>
-                            <li><a href="/"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="/"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="/"><i class="fab fa-facebook-f"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-        </div>
         <div id="nav-head" class="header-nav">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
                         <a href="{% url 'home' %}">
+
                             <img src="{% static 'home/images/carecardiologo.png' %}" alt="company logo">
+
                         </a>
                         <a data-toggle="collapse" data-target="#menu" href="#menu"><i
                                 class="fas d-block d-md-none small-menu fa-bars"></i></a>
@@ -78,12 +60,9 @@
                         <a href="{% url 'schedule_appointment' %}" class="btn btn-info">Book an Appointment</a>
                     </div>
                 </div>
-
             </div>
         </div>
-
     </header>
-
     {% if messages %}
     <div class="message-container">
         {% for message in messages %}
@@ -114,55 +93,43 @@
             <div class="col-md-4 col-sm-12">
                 <h2>About Us</h2>
                 <p>
-                    Smart Eye is a leading provider of information technology, consulting, and business process
-                    services. Our dedicated employees offer strategic insights, technological expertise and industry
-                    experience.
-                </p>
-                <p>We focus on technologies that promise to reduce costs, streamline processes and speed
-                    time-to-market, Backed by our strong quality processes and rich experience managing global...
+                    CareCardio is dedicated to combating cardiovascular disease (CVD), a significant contributor to premature mortality in the UK. Through our specialised cardiac primary care services, CareCardio focuses on early detection and treatment, enabling patients to live healthier and longer lives.
                 </p>
             </div>
             <div class="col-md-4 col-sm-12">
                 <h2>Useful Links</h2>
                 <ul class="list-unstyled link-list">
-                    <li><a ui-sref="about" href="#/about">About us</a><i class="fa fa-angle-right"></i></li>
-                    <li><a ui-sref="portfolio" href="#/portfolio">Portfolio</a><i class="fa fa-angle-right"></i>
-                    </li>
                     <li><a ui-sref="products" href="#/products">Latest jobs</a><i class="fa fa-angle-right"></i>
                     </li>
-                    <li><a ui-sref="gallery" href="#/gallery">Gallery</a><i class="fa fa-angle-right"></i></li>
+                    <li><a ui-sref="blog" href="blog.html">Blog</a><i class="fa fa-angle-right"></i></li>
                     <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li>
                 </ul>
             </div>
-            <div class="col-md-4 col-sm-12 map-img">
-                <h2>Contact Us</h2>
-                <address class="md-margin-bottom-40">
-                    BlueDart <br>
-                    Marthandam (K.K District) <br>
-                    Tamil Nadu, IND <br>
-                    Phone: +91 9159669599 <br>
-                    Email: <a href="mailto:info@anybiz.com" class="">info@bluedart.in</a><br>
-                    Web: <a href="smart-eye.html" class="">www.bluedart.in</a>
-                </address>
-
+            <div class="col-md-4 col-sm-12">
+                <h2>Legals</h2>
+                <ul class="list-unstyled link-list">
+                    <li><a href="/" target="_blank">Privacy policy</a></li>
+                    <li><a href="/" target="_blank">Terms &amp; conditions</a></li>
+                    <li><a href="/" target="_blank">End user license agreement</a></li>
+                    <li><a href="/" target="_blank">Regulatory</a></li>
+                    <li><a href="/">Accessibility statement</a></li>
+                </ul>
             </div>
         </div>
     </div>
-
-
 </footer>
+
 <div class="copy">
     <div class="container">
-        <a href="https://www.smarteyeapps.com/">2015 &copy; All Rights Reserved | Designed and Developed by
-            Smarteyeapps</a>
-
+            <div class="Footer_copyrightContainer__RKR0K">© CareCardio 2023 - All rights reserved. </div>
         <span>
             <a href="/"><i class="fab fa-instagram"></i></a>
             <a href="/"><i class="fab fa-twitter"></i></a>
             <a href="/"><i class="fab fa-facebook-f"></i></a>
+            <a href="/"><i class="fab fa-youtube"></i></a>
         </span>
     </div>
-
+    <br>
 </div>
 
 <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
