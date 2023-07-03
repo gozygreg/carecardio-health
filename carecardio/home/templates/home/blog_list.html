@@ -29,8 +29,12 @@
                <div class="col-md-4 col-sm-6">
                    <div class="single-blog">
                        <figure>
-                           <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="">
-                           <!-- <img src="{{post.image}}" alt=""> -->
+                           <!-- <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt=""> -->
+                        {% if "placeholder" in post.image.url %}
+                        <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="default-image">
+                        {% else %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                        {% endif %}
                        </figure>
                        <div class="blog-detail">
                            <small>By Admin | August 10 2018</small>

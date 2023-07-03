@@ -14,7 +14,8 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    image = CloudinaryField('image')
+    image = CloudinaryField(
+        'image', default='https://res.cloudinary.com/dezgpatyj/image/upload/v1688422406/blog_02_e9po0t.jpg')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
