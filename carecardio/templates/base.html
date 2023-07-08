@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
                         <a href="{% url 'home' %}">
-                            <img src="{% static 'home/images/logo.png' %}" alt="company logo">
+                            <img src="{% static 'home/images/carecardiologo.png' %}" alt="company logo">
                         </a>
                         <a data-toggle="collapse" data-target="#menu" href="#menu"><i
                                 class="fas d-block d-md-none small-menu fa-bars"></i></a>
@@ -46,10 +46,10 @@
                     <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
                         <ul>
                             <li><a href="{% url 'home' %}">Home</a></li>
-                            <li><a href="about_us.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
+                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                            <li><a href="{% url 'services' %}">Services</a></li>
                             <li><a href="blog.html">Blog</a></li>
-                            <li><a href="/">Academy</a></li>
+                            <li><a href="{% url 'video_list' %}">Academy</a></li>
                             <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
                         </ul>
                     </div>

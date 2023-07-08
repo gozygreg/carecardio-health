@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+   <!-- ************************* Page Title Starts Here ************************** -->
+   <div class="page-nav no-margin row">
+       <div class="container">
+           <div class="row">
+               <h2>Our Academy</h2>
+               <ul>
+                   <li> <a href="#"><i class="fas fa-home"></i> Academy</a></li>
+                   <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
+               </ul>
+           </div>
+       </div>
+   </div>
+
+   <!-- ######## Page  Title End ####### -->
+
+   <!-- ################# Our Blog Starts Here#######################--->
+   <section class="our-blog">
+       <div class="container">
+           <div class="row session-title">
+               <h2> CareCardio Academy </h2>
+               <p>Enhance your skills as an exceptional cath lab staff by enrolling in our comprehensive 6-week Cardiac Cath Lab Module. Gain the expertise and knowledge required to excel in the field.</p>
+           </div>
+           <div class="blog-row row">
+               
+               <div class="col-md-4 col-sm-6">
+                   <div class="single-blog">
+                       <figure>
+                        <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="default-image">
+                        
+                        <img src="/" alt="">
+                        
+                       </figure>
+                       <div class="blog-detail">
+                           <small>By Admin | August 10 2018</small>
+                           <h4>Introducation to the Cardiac Cath Lab</h4>
+                           <div>
+                               <a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
+                           </div>
+                           <h5></h5>
+                       </div>
+                   </div>
+               </div>
+             
+           </div>
+           <div class="row blog-row">
+             
+              
+           </div>
+       </div>
+   </section>
+
+   <!-- ################# Footer Starts Here#######################--->
+{% endblock %}

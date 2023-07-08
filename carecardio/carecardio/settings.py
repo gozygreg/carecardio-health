@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'home',
     'appointments',
     'carecardioblog',
+    'academy',
 ]
 
 MIDDLEWARE = [
