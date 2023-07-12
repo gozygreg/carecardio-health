@@ -1,25 +1,23 @@
 from django.contrib import admin
-from .models import Video, VideoSummary
+from .models import Course, Module, Quiz
 from django_summernote.admin import SummernoteModelAdmin
 from django_summernote.widgets import SummernoteWidget
 
-# Register your models here.
+
+@admin.register(Course)
+class CourseAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'description')
+    summernote_fields = ('description',)
 
 
-class VideoAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'url',)
-    search_fields = ('title',)
-    list_filter = ('title',)
-    # Add this line to enable Summernote for the 'content' field
-    summernote_fields = ('summary',)
-
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        formfield = super().formfield_for_dbfield(db_field, **kwargs)
-        if db_field.name == 'content':
-            formfield.widget = SummernoteWidget(
-                attrs={'summernote': {'toolbar': []}})
-        return formfield
+@admin.register(Module)
+class ModuleAdmin(SummernoteModelAdmin):
+    list_display = ('title', 'course', 'description', 'video')
+    list_filter = ('course',)
+    summernote_fields = ('description',)
 
 
-admin.site.register(VideoSummary)
-admin.site.register(Video, VideoAdmin)
+@admin.register(Quiz)
+class QuizAdmin(admin.ModelAdmin):
+    list_display = ('title', 'module')
+    list_filter = ('module',)
