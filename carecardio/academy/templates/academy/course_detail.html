@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-   <!-- ************************* Page Title Starts Here ************************** -->
+   ************************* Page Title Starts Here **************************
    <div class="page-nav no-margin row">
        <div class="container">
            <div class="row">
@@ -33,18 +33,22 @@
                <div class="col-md-4 col-sm-6">
                    <div class="single-blog">
                        <figure>
-                        <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="default-image">
+                        <img src="/" alt="default-image">
                         
                         <img src="/" alt="">
                         
                        </figure>
                        <div class="blog-detail">
                            <small>By Admin | August 10 2018</small>
-                           <h4>Introducation to the Cardiac Cath Lab</h4>
-                           <div>
-                               <a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
-                           </div>
-                           <h5></h5>
+                           <h3>Course: {{ course.title }}</h3>
+                           <p>Course Description: {{ course.description }}</p>
+
+                           <h3>Modules</h3>
+                           <ul>
+                               {% for module in modules %}
+                                   <li><a href="{% url 'module_detail' module.pk %}">{{ module.title }}Read more</a></li>
+                               {% endfor %}
+                           </ul>
                        </div>
                    </div>
                </div>

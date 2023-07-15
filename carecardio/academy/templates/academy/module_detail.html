@@ -24,13 +24,10 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="blog-post">
-                    <h2>{{ video.title }}</h2>
-                    <!-- <small>By Admin | {{ post.created_at }}</small> -->
+                    <h2>{{ module.title }}</h2>
+                    <p>{{ module.description }}</p>
                     <figure>
-                        <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="default-image">
-                        
-                        <img src="/" alt="">
-                        
+                        <video src="{{ module.video }}" controls></video>
                     </figure>
                     <p>{{ video.summary | safe }}</p>
                     <div class="share-buttons">
@@ -41,21 +38,13 @@
             <div class="col-md-4">
                 <div class="sidebar">
                     <div class="recent-posts">
-                        <h3>Video Summary</h3>
-                        <ul>
-                            {% for recent_post in recent_posts %}
-                            <li><a href="/">{{ recent_post.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    <div class="categories">
-                        <h3>Categories</h3>
-                        <ul>
-                            {% for category in categories %}
-                            <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                        <h3>Quiz</h3>
+                        {% if quiz %}
+                            <h4>{{ quiz.title }}</h4>
+                            <!-- Add more quiz-related content here -->
+                        {% else %}
+                            <p>No quiz available for this module.</p>
+                        {% endif %}
                     <!-- Add more sidebar content if needed -->
                 </div>
             </div>

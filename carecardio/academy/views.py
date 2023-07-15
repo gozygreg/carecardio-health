@@ -4,7 +4,7 @@ from .models import Course, Module, Quiz
 
 def course_list(request):
     courses = Course.objects.all()
-    return render(request, 'academy/course_list.html', {'courses': courses})
+    return render(request, 'academy/course_list.html', {'courses': courses, 'course': Course()})
 
 
 def course_detail(request, course_id):

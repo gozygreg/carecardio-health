@@ -9,7 +9,7 @@
                <h2>Our Academy</h2>
                <ul>
                    <li> <a href="#"><i class="fas fa-home"></i> Academy</a></li>
-                   <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
+                   <li><i class="fas fa-angle-double-right"></i> CareCardio Academy Courses</li>
                </ul>
            </div>
        </div>
@@ -26,10 +26,10 @@
        <div class="container">
            <div class="row session-title">
                <h2> CareCardio Academy </h2>
-               <p>Enhance your skills as an exceptional cath lab staff by enrolling in our comprehensive 6-week Cardiac Cath Lab Module. Gain the expertise and knowledge required to excel in the field.</p>
+               <p>Elevate your educational journey by enrolling in our cutting-edge cardiac courses. Explore the modules by clicking on any course below.</p>
            </div>
            <div class="blog-row row">
-               
+            {% for course in courses %}
                <div class="col-md-4 col-sm-6">
                    <div class="single-blog">
                        <figure>
@@ -42,13 +42,13 @@
                            <small>By Admin | August 10 2018</small>
                            <h4>Introducation to the Cardiac Cath Lab</h4>
                            <div>
-                               <a href="">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
+                            <a href="{% url 'course_detail' course.pk %}">Read more </a><i class="fas fa-long-arrow-alt-right"></i>
                            </div>
                            <h5></h5>
                        </div>
                    </div>
                </div>
-             
+            {% endfor %}
            </div>
            <div class="row blog-row">
              
