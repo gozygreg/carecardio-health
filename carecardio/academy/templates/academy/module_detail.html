@@ -19,36 +19,46 @@
 
    <!-- ################# Our Blog Starts Here#######################--->
    <!-- ################# Blog Detail Starts Here ####################### -->
-   <section class="blog-detail">
+   <section class="our-blog">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="blog-post">
-                    <h2>{{ module.title }}</h2>
-                    <p>{{ module.description }}</p>
+        <!-- ... (existing content) ... -->
+
+        {% if user.is_authenticated and module in user.enrollment_set.values_list('course__module', flat=True) %}
+            <div class="col-md-8 col-sm-12">
+                <div class="single-blog">
                     <figure>
-                        <video src="{{ module.video }}" controls></video>
+                        <!-- Add module image here -->
+                        <img src="/" alt="default-image">
                     </figure>
-                    <p>{{ video.summary | safe }}</p>
-                    <div class="share-buttons">
-                        <!-- Add your share buttons here -->
+                    <div class="blog-detail">
+                        <h3>Module: {{ module.title }}</h3>
+                        <p>Module Description: {{ module.description }}</p>
+                        <p>Video: {{ module.video }}</p>
+                        <!-- Display the quiz if available -->
+                        {% if quiz %}
+                            <h3>Quiz: {{ quiz.title }}</h3>
+                            <!-- Display the quiz questions and answers -->
+                            {% for question in quiz.question_set.all %}
+                                <h4>{{ question.content }}</h4>
+                                <ul>
+                                    {% for answer in question.answer_set.all %}
+                                        <li>{{ answer.content }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="sidebar">
-                    <div class="recent-posts">
-                        <h3>Quiz</h3>
-                        {% if quiz %}
-                            <h4>{{ quiz.title }}</h4>
-                            <!-- Add more quiz-related content here -->
-                        {% else %}
-                            <p>No quiz available for this module.</p>
-                        {% endif %}
-                    <!-- Add more sidebar content if needed -->
-                </div>
+        {% else %}
+            <div class="col-md-8 col-sm-12">
+                <h3>You need to enroll in this module to access its content.</h3>
+                <a href="{% url 'enroll_course' course.pk %}" class="btn btn-primary">Enroll Now</a>
             </div>
-        </div>
+        {% endif %}
+
+        <!-- ... (existing content) ... -->
+
     </div>
 </section>
 <br><br>

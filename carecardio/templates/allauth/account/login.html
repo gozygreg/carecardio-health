@@ -5,8 +5,27 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
+
 {% block content %}
 
+             <!--  ************************* Page Title Starts Here ************************** -->
+             <div class="page-nav no-margin row">
+                <div class="container">
+                    <div class="row">
+                        <h2>Login to your account</h2>
+
+                        <form class="login" method="POST" action="{% url 'account_login' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if redirect_field_value %}
+                            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                            {% endif %}
+                            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 <h1>{% trans "Sign In" %}</h1>
 
 {% get_providers as socialaccount_providers %}
@@ -15,6 +34,7 @@
 <p>{% blocktrans with site.name as site_name %}Please sign in with one
     of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
     for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+
 
 <div class="socialaccount_ballot">
 
@@ -34,14 +54,9 @@
 </p>
 {% endif %}
 
-<form class="login" method="POST" action="{% url 'account_login' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
-    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-    <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
-</form>
+
+
+
+
 
 {% endblock %}

@@ -5,6 +5,18 @@
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+         <!--  ************************* Page Title Starts Here ************************** -->
+         <div class="page-nav no-margin row">
+            <div class="container">
+                <div class="row">
+                    <h2>About CareCardio Health</h2>
+                    <ul>
+                        <li> <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                        <li><i class="fas fa-angle-double-right"></i> About Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 <h1>{% trans "Sign Up" %}</h1>
 
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
