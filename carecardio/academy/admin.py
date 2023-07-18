@@ -9,12 +9,26 @@ class CourseAdmin(SummernoteModelAdmin):
     list_display = ('title', 'description')
     summernote_fields = ('description',)
 
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super().formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = SummernoteWidget(
+                attrs={'summernote': {'toolbar': []}})
+        return formfield
+
 
 @admin.register(Module)
 class ModuleAdmin(SummernoteModelAdmin):
     list_display = ('title', 'course', 'description', 'video')
     list_filter = ('course',)
     summernote_fields = ('description',)
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super().formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name == 'description':
+            formfield.widget = SummernoteWidget(
+                attrs={'summernote': {'toolbar': []}})
+        return formfield
 
 
 @admin.register(Quiz)

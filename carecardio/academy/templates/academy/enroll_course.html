@@ -1,9 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Enroll to {{ course.title }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Enroll">
-    </form>
+
+    <div class="page-nav no-margin row">
+        <div class="container">
+            <div class="row">
+                <h2>Our Academy</h2>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Academy</a></li>
+                    <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
+                </ul>        
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 txtr">
+                <h3>Fill the form below to enroll to {{ course.title }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="Enroll">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
 {% endblock %}
