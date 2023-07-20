@@ -1,34 +1,38 @@
 from django.contrib import admin
+from django import forms
 from .models import Course, Module, Quiz
-from django_summernote.admin import SummernoteModelAdmin
-from django_summernote.widgets import SummernoteWidget
+from django.utils.html import strip_tags
+
+
+class DescriptionWidget(forms.Textarea):
+    def render(self, name, value, attrs=None, renderer=None):
+        value = strip_tags(value) if value else ''
+        return super().render(name, value, attrs, renderer)
+
+
+class DescriptionAdminMixin(admin.ModelAdmin):
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        if 'description' in form.base_fields:
+            form.base_fields['description'].widget = DescriptionWidget()
+        return form
 
 
 @admin.register(Course)
-class CourseAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'description')
-    summernote_fields = ('description',)
+class CourseAdmin(DescriptionAdminMixin):
+    list_display = ('title', 'short_description')
 
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        formfield = super().formfield_for_dbfield(db_field, **kwargs)
-        if db_field.name == 'description':
-            formfield.widget = SummernoteWidget(
-                attrs={'summernote': {'toolbar': []}})
-        return formfield
+    def short_description(self, obj):
+        return strip_tags(obj.description)
 
 
 @admin.register(Module)
-class ModuleAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'course', 'description', 'video')
+class ModuleAdmin(DescriptionAdminMixin):
+    list_display = ('title', 'course', 'short_description', 'video')
     list_filter = ('course',)
-    summernote_fields = ('description',)
 
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        formfield = super().formfield_for_dbfield(db_field, **kwargs)
-        if db_field.name == 'description':
-            formfield.widget = SummernoteWidget(
-                attrs={'summernote': {'toolbar': []}})
-        return formfield
+    def short_description(self, obj):
+        return strip_tags(obj.description)
 
 
 @admin.register(Quiz)

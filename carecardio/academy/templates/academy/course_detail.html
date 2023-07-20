@@ -42,18 +42,17 @@
                             <small>By Admin | August 10, 2018</small>
                             <h3>Course: {{ course.title }}</h3>
                             <p>Course Description: {{ course.description }}</p>
-
-                            <p>This comprehensive course consists of 7 well-structured modules, each thoughtfully designed with detailed video lessons, in-depth explanations, and engaging quizzes. You'll have everything you need to enhance your knowledge and skills in this subject area.<p>
+                            <br>
                             <ul>
                                 {% for module in modules %}
-                                    <li><a href="{% url 'module_detail' module.pk %}">{{ module.title }} - Read more</a></li>
+                                    <li><a href="{% url 'module_detail' module.pk %}" class="btn">{{ module.title }} - Read more</a></li>
                                 {% endfor %}
                             </ul>
-
+                            <br>
                             <!-- Enrollment Form -->
                             <form method="POST" action="{% url 'enroll_course' course.pk %}">
                                 {% csrf_token %}
-                                <button type="submit">Enroll Now</button>
+                                <button type="submit" class="btn btn-info">Enroll Now</button>
                             </form>
                         </div>
                     </div>
