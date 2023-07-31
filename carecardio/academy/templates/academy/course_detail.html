@@ -41,11 +41,11 @@
                         <div class="blog-detail">
                             <small>By Admin | August 10, 2018</small>
                             <h3>Course: {{ course.title }}</h3>
-                            <p>Course Description: {{ course.description }}</p>
+                            <p>{{ course.description|safe }}</p>
                             <br>
                             <ul>
                                 {% for module in modules %}
-                                    <li><a href="{% url 'module_detail' module.pk %}" class="btn">{{ module.title }} - Read more</a></li>
+                                    <li><a href="{% url 'module_detail' module.pk %}" class="btn">See all modules here</a></li>
                                 {% endfor %}
                             </ul>
                             <br>
