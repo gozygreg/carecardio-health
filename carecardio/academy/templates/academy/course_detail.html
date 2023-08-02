@@ -30,24 +30,17 @@
                     Cath Lab Module. Gain the expertise and knowledge required to excel in the field.</p>
             </div>
             <div class="blog-row row">
-
-                <div class="col-md-4 col-sm-6">
+                <div class="col-lg-6 col-md-12 module-list">
                     <div class="single-blog">
                         <figure>
                             <!-- Add course image here -->
                             <img src="/" alt="default-image">
-                            <img src="/" alt="">
                         </figure>
                         <div class="blog-detail">
                             <small>By Admin | August 10, 2018</small>
                             <h3>Course: {{ course.title }}</h3>
                             <p>{{ course.description|safe }}</p>
-                            <br>
-                            <ul>
-                                {% for module in modules %}
-                                    <li><a href="{% url 'module_detail' module.pk %}" class="btn">See all modules here</a></li>
-                                {% endfor %}
-                            </ul>
+                            <br>               
                             <br>
                             <!-- Enrollment Form -->
                             <form method="POST" action="{% url 'enroll_course' course.pk %}">
@@ -57,11 +50,18 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-lg-6 col-md-12 module-list">
+                    <h2>Course Modules</h2>
+                    <ul>
+                        {% for module in modules %}
+                            <li>{{ module.title }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
 
             </div>
-            <div class="row blog-row">
 
-            </div>
         </div>
     </section>
 
