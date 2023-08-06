@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-# from django.contrib.auth.decorators import login_required
+
 from .forms import EnrollmentForm
 from .models import Course, Module, Quiz
 
@@ -16,7 +16,7 @@ def course_detail(request, course_id):
 
 
 def is_user_enrolled(view_func):
-    # @login_required
+
     def _wrapped_view(request, module_id, *args, **kwargs):
         module = get_object_or_404(Module, id=module_id)
         enrolled_modules = request.user.enrollment_set.values_list(
@@ -29,7 +29,6 @@ def is_user_enrolled(view_func):
     return _wrapped_view
 
 
-# @login_required
 def module_detail(request, module_id):
     module = get_object_or_404(Module, id=module_id)
     # Assuming each module has only one quiz
@@ -41,7 +40,6 @@ def module_detail(request, module_id):
 module_detail = is_user_enrolled(module_detail)
 
 
-# @login_required
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
 
@@ -51,8 +49,16 @@ def enroll_course(request, course_id):
             enrollment = form.save(commit=False)
             enrollment.user = request.user
             enrollment.course = course
+
+            # Get the corresponding module for the course and assign it to the 'module' attribute
+            module = Module.objects.filter(course=course).first()
+            enrollment.module = module
+
             enrollment.save()
-            return redirect('course_detail', course_id=course_id)
+
+            # Redirect to the module_detail page of the enrolled module
+            return redirect('module_detail', module_id=module.id)
+
     else:
         form = EnrollmentForm()
 

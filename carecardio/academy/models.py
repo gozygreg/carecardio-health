@@ -22,7 +22,8 @@ class Course(models.Model):
 
 
 class Module(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ForeignKey(
+        Course, on_delete=models.CASCADE, related_name='modules')
     title = models.CharField(max_length=255)
     description = models.TextField()
     video = models.URLField()
@@ -59,6 +60,8 @@ class Answer(models.Model):
 class Enrollment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    module = models.ForeignKey(
+        Module, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=255)
     profession = models.CharField(max_length=50, choices=PROFESSION_CHOICES)
     email = models.EmailField()

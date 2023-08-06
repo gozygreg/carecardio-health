@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'appointments',
     'carecardioblog',
     'academy',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [

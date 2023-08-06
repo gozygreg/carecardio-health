@@ -1,67 +1,69 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
-   <!-- ************************* Page Title Starts Here ************************** -->
-   <div class="page-nav no-margin row">
-       <div class="container">
-           <div class="row">
-               <h2>Our Academy</h2>
-               <ul>
-                   <li> <a href="#"><i class="fas fa-home"></i> Home</a></li>
-                   <li><i class="fas fa-angle-double-right"></i> Our Academy</li>
-               </ul>
-           </div>
-       </div>
-   </div>
-
-   <!-- ######## Page  Title End ####### -->
-
-   <!-- ################# Our Blog Starts Here#######################--->
-   <!-- ################# Blog Detail Starts Here ####################### -->
-   <section class="our-blog">
-    <div class="container">
-        <!-- ... (existing content) ... -->
-
-        {% if user.is_authenticated and module in user.enrollment_set.values_list('course__module', flat=True) %}
-            <div class="col-md-8 col-sm-12">
-                <div class="single-blog">
-                    <figure>
-                        <!-- Add module image here -->
-                        <img src="/" alt="default-image">
-                    </figure>
-                    <div class="blog-detail">
-                        <h3>Module: {{ module.title }}</h3>
-                        <p>Module Description: {{ module.description }}</p>
-                        <p>Video: {{ module.video }}</p>
-                        <!-- Display the quiz if available -->
-                        {% if quiz %}
-                            <h3>Quiz: {{ quiz.title }}</h3>
-                            <!-- Display the quiz questions and answers -->
-                            {% for question in quiz.question_set.all %}
-                                <h4>{{ question.content }}</h4>
-                                <ul>
-                                    {% for answer in question.answer_set.all %}
-                                        <li>{{ answer.content }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endfor %}
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        {% else %}
-            <div class="col-md-8 col-sm-12">
-                <h3>You need to enroll in this module to access its content.</h3>
-                <a href="{% url 'enroll_course' course.pk %}" class="btn btn-primary">Enroll Now</a>
-            </div>
-        {% endif %}
-
-        <!-- ... (existing content) ... -->
-
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- ************************* Page Title Starts Here ************************** -->
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2>Our Academy</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li><i class="fas fa-angle-double-right"></i> Our Academy</li>
+      </ul>
     </div>
+  </div>
+</div>
+
+<!-- ######## Page  Title End ####### -->
+
+<!-- ################# Our Blog Starts Here#######################--->
+<!-- ################# Blog Detail Starts Here ####################### -->
+<section class="our-blog">
+  <div class="container">
+    <!-- ... (existing content) ... -->
+
+    {% if request.user.is_authenticated and module in
+    request.user.enrollment_set.values_list('course__module', flat=True) %}
+    <!-- Display the module details if the user is enrolled -->
+    <div class="col-md-8 col-sm-12">
+      <div class="single-blog">
+        <figure>
+          <!-- Add module image here -->
+          <img src="/" alt="default-image" />
+        </figure>
+        <div class="blog-detail">
+          <h3>Module: {{ module.title }}</h3>
+          <p>Module Description: {{ module.description }}</p>
+          <p>Video: {{ module.video }}</p>
+          <!-- Display the quiz if available -->
+          {% if quiz %}
+          <h3>Quiz: {{ quiz.title }}</h3>
+          <!-- Display the quiz questions and answers -->
+          {% for question in quiz.question_set.all %}
+          <h4>{{ question.content }}</h4>
+          <ul>
+            {% for answer in question.answer_set.all %}
+            <li>{{ answer.content }}</li>
+            {% endfor %}
+          </ul>
+          {% endfor %} {% endif %}
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <!-- Show enroll button if the user is not enrolled -->
+    <div class="col-md-8 col-sm-12">
+      <h3>You need to enroll in this module to access its content.</h3>
+      <a href="{% url 'enroll_course' course.pk %}" class="btn btn-primary"
+        >Enroll Now</a
+      >
+    </div>
+    {% endif %}
+
+    <!-- ... (existing content) ... -->
+  </div>
 </section>
-<br><br>
+<br /><br />
 <!-- ################# Blog Detail Ends Here ####################### -->
 
 <!-- ################# Footer Starts Here ####################### -->
