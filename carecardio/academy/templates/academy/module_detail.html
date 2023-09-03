@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% load enrollment_tags %} {% block content %}
 <!-- ************************* Page Title Starts Here ************************** -->
 <div class="page-nav no-margin row">
   <div class="container">
@@ -6,65 +6,80 @@
       <h2>Our Academy</h2>
       <ul>
         <li>
-          <a href="#"><i class="fas fa-home"></i> Home</a>
+          <a href="#"><i class="fas fa-home"></i> Academy</a>
         </li>
-        <li><i class="fas fa-angle-double-right"></i> Our Academy</li>
+        <li><i class="fas fa-angle-double-right"></i> Welcome, {{ user }}</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- ######## Page  Title End ####### -->
-
-<!-- ################# Our Blog Starts Here#######################--->
-<!-- ################# Blog Detail Starts Here ####################### -->
+<!-- ... (existing content) ... -->
+<br /><br /><br />
 <section class="our-blog">
   <div class="container">
-    <!-- ... (existing content) ... -->
+    <div class="row">
+      <div class="col-12">
+        <div class="single-blog">
+          <div class="blog-detail">
+            <h3>{{ module.title }}</h3>
+          </div>
+        </div>
+      </div>
+      <!--Write your if statement here-->
+      <!-- Display the module details if the user is enrolled -->
+      <!-- Display the module details if the user is enrolled -->
+      {% if user|has_enrollment:module.course %}
+      <div class="col-md-8 col-sm-12">
+        <div class="single-blog">
+          <div class="blog-detail">
+            <p>{{ module.description|safe }}</p>
+            <br />
+            <div class="video-container">
+              <video controls style="max-width: 100%" width="100%">
+                <source src="{{ module.video.url }}" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
 
-    {% if request.user.is_authenticated and module in
-    request.user.enrollment_set.values_list('course__module', flat=True) %}
-    <!-- Display the module details if the user is enrolled -->
-    <div class="col-md-8 col-sm-12">
-      <div class="single-blog">
-        <figure>
-          <!-- Add module image here -->
-          <img src="/" alt="default-image" />
-        </figure>
-        <div class="blog-detail">
-          <h3>Module: {{ module.title }}</h3>
-          <p>Module Description: {{ module.description }}</p>
-          <p>Video: {{ module.video }}</p>
-          <!-- Display the quiz if available -->
-          {% if quiz %}
-          <h3>Quiz: {{ quiz.title }}</h3>
-          <!-- Display the quiz questions and answers -->
-          {% for question in quiz.question_set.all %}
-          <h4>{{ question.content }}</h4>
-          <ul>
-            {% for answer in question.answer_set.all %}
-            <li>{{ answer.content }}</li>
-            {% endfor %}
-          </ul>
-          {% endfor %} {% endif %}
+            <!-- Display the quiz if available -->
+            {% if quiz %}
+            <h3>Quiz: {{ quiz.title }}</h3>
+            <!-- Display the quiz questions and answers -->
+            <ul>
+              {% for question in quiz.question_set.all %}
+              <li>{{ question.content }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12">
+        <!-- Display the PDF link if available -->
+        <div class="single-blog">
+          <div class="blog-detail">
+            {% if module.pdf %}
+            <h3>Learning notes</h3>
+            <i class="fas fa-file"></i>
+            <a href="{{ module.pdf.url }}" target="_blank">Download PDF</a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
+    <!--End your if statement here-->
     {% else %}
+    <!--Write your if statement here-->
     <!-- Show enroll button if the user is not enrolled -->
     <div class="col-md-8 col-sm-12">
       <h3>You need to enroll in this module to access its content.</h3>
-      <a href="{% url 'enroll_course' course.pk %}" class="btn btn-primary"
-        >Enroll Now</a
-      >
+      <!--write your anchor link-->
     </div>
+    <!--End your if statement here-->
     {% endif %}
-
-    <!-- ... (existing content) ... -->
   </div>
 </section>
 <br /><br />
-<!-- ################# Blog Detail Ends Here ####################### -->
-
-<!-- ################# Footer Starts Here ####################### -->
 {% endblock %}

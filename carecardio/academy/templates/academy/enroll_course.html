@@ -1,32 +1,41 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <div class="page-nav no-margin row">
-        <div class="container">
-            <div class="row">
-                <h2>Our Academy</h2>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Academy</a></li>
-                    <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
-                </ul>        
-            </div>
-        </div>
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2>Our Academy</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-home"></i> Academy</a>
+        </li>
+        <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
+      </ul>
     </div>
+  </div>
+</div>
 
-   
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 txtr">
-                <h3>Fill the form below to enroll to {{ course.title }}</h3>
-                <form method="post">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <input class="btn btn-info" type="submit" value="Enroll">
-                </form>
-            </div>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-12 txtr">
+      {% if form.instance.name %}
+        <h3>You are already enrolled in {{ course.title }} Course.</h3>
+        <p>Your enrollment details:</p>
+        <ul>
+          <li><strong>Name:</strong> {{ form.instance.name }}</li>
+          <li><strong>Profession:</strong> {{ form.instance.profession }}</li>
+          <li><strong>Email:</strong> {{ form.instance.email }}</li>
+          <li><strong>Phone:</strong> {{ form.instance.phone }}</li>
+        </ul>
+      {% else %}
+        <h3>Fill the form below to enroll in {{ course.title }} Course</h3>
+        <form method="POST" action="{% url 'enroll_course' course.id %}">
+          {% csrf_token %} {{ form.as_p }}
+          <input class="btn btn-info" type="submit" value="Enroll" />
+        </form>
+      {% endif %}
     </div>
+  </div>
+</div>
 
-    <br>
-
+<br />
 {% endblock %}

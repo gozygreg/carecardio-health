@@ -7,17 +7,16 @@ from django_summernote.widgets import SummernoteWidget
 
 
 class PostAdmin(SummernoteModelAdmin):
-    list_display = ('title', 'category', 'created_at')
-    search_fields = ('title', 'category__name')
-    list_filter = ('category', 'created_at')
+    list_display = ("title", "category", "created_at")
+    search_fields = ("title", "category__name")
+    list_filter = ("category", "created_at")
     # Add this line to enable Summernote for the 'content' field
-    summernote_fields = ('content',)
+    summernote_fields = ("content",)
 
     def formfield_for_dbfield(self, db_field, **kwargs):
         formfield = super().formfield_for_dbfield(db_field, **kwargs)
-        if db_field.name == 'content':
-            formfield.widget = SummernoteWidget(
-                attrs={'summernote': {'toolbar': []}})
+        if db_field.name == "content":
+            formfield.widget = SummernoteWidget(attrs={"summernote": {"toolbar": []}})
         return formfield
 
 

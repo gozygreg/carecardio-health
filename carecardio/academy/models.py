@@ -1,21 +1,23 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 PROFESSION_CHOICES = [
-    ('Cardiac nurse', 'Cardiac Nurse'),
-    ('Cardiology Registra', 'Cardiology Registra'),
-    ('Cardiac Physiologist', 'Cardiac Physiologist'),
-    ('Radiographer', 'Radiographer'),
-    ('Student Nurse', 'Student Nurse'),
-    ('Medical Student', 'Medical Student'),
-    ('Student Physiologist', 'Student Physiologist'),
-    ('Student Radiographer', 'Student Radiographer'),
+    ("Cardiac nurse", "Cardiac Nurse"),
+    ("Cardiology Registra", "Cardiology Registra"),
+    ("Cardiac Physiologist", "Cardiac Physiologist"),
+    ("Radiographer", "Radiographer"),
+    ("Student Nurse", "Student Nurse"),
+    ("Medical Student", "Medical Student"),
+    ("Student Physiologist", "Student Physiologist"),
+    ("Student Radiographer", "Student Radiographer"),
 ]
 
 
 class Course(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
+    image = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -23,10 +25,15 @@ class Course(models.Model):
 
 class Module(models.Model):
     course = models.ForeignKey(
-        Course, on_delete=models.CASCADE, related_name='modules')
+        Course, on_delete=models.CASCADE, related_name="modules")
     title = models.CharField(max_length=255)
     description = models.TextField()
-    video = models.URLField()
+    video = CloudinaryField(
+        'video', resource_type='video', blank=True, null=True)
+    video_width = models.PositiveIntegerField(default=640)
+    video_height = models.PositiveIntegerField(default=360)
+    pdf = CloudinaryField(
+        'pdf', resource_type="image", blank=True, null=True)
 
     def __str__(self):
         return self.title

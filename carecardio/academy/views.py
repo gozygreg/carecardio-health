@@ -1,65 +1,54 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
 from .forms import EnrollmentForm
-from .models import Course, Module, Quiz
+from .models import Course, Module, Quiz, Enrollment
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
-
+# View for listing all courses
 def course_list(request):
     courses = Course.objects.all()
-    return render(request, 'academy/course_list.html', {'courses': courses, 'course': Course()})
+    return render(request, "academy/course_list.html", {"courses": courses})
 
-
+# View for displaying course details
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
     modules = Module.objects.filter(course=course)
-    return render(request, 'academy/course_detail.html', {'course': course, 'modules': modules})
+    return render(request, "academy/course_detail.html", {"course": course, "modules": modules})
 
-
-def is_user_enrolled(view_func):
-
-    def _wrapped_view(request, module_id, *args, **kwargs):
-        module = get_object_or_404(Module, id=module_id)
-        enrolled_modules = request.user.enrollment_set.values_list(
-            'course__module', flat=True)
-        if module in enrolled_modules:
-            return view_func(request, module_id, *args, **kwargs)
-        else:
-            return redirect('enroll_course', course_id=module.course.pk)
-
-    return _wrapped_view
-
-
+# View for displaying module details
+@login_required
 def module_detail(request, module_id):
     module = get_object_or_404(Module, id=module_id)
     # Assuming each module has only one quiz
     quiz = Quiz.objects.filter(module=module).first()
-    return render(request, 'academy/module_detail.html', {'module': module, 'quiz': quiz})
+    enrolled_course_ids = request.user.enrollment_set.values_list('course__id', flat=True)
 
+    # Check if the user is enrolled in the course containing this module
+    if module.course_id in enrolled_course_ids:
+        return render(request, "academy/module_detail.html", {"module": module, "quiz": quiz})
+    else:
+        # Redirect the user to enroll in the course if not enrolled
+        return redirect("enroll_course", course_id=module.course.pk)
 
-# Apply the custom decorator to the module_detail view
-module_detail = is_user_enrolled(module_detail)
-
-
+# View for enrolling in a course and granting access to all modules in that course
+@login_required
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
+    
+    # Check if the user is already enrolled
+    enrollment, created = Enrollment.objects.get_or_create(user=request.user, course=course)
 
-    if request.method == 'POST':
-        form = EnrollmentForm(request.POST)
-        if form.is_valid():
-            enrollment = form.save(commit=False)
-            enrollment.user = request.user
-            enrollment.course = course
-
-            # Get the corresponding module for the course and assign it to the 'module' attribute
-            module = Module.objects.filter(course=course).first()
-            enrollment.module = module
-
-            enrollment.save()
-
-            # Redirect to the module_detail page of the enrolled module
-            return redirect('module_detail', module_id=module.id)
-
+    if not created:
+        form = EnrollmentForm(request.POST or None, instance=enrollment, user=request.user)
     else:
-        form = EnrollmentForm()
+        form = EnrollmentForm(request.POST or None, user=request.user)
 
-    return render(request, 'academy/enroll_course.html', {'form': form, 'course': course})
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You have successfully enrolled in this course.')
+            return redirect("course_detail", course_id=course_id)
+        else:
+            messages.error(request, 'There was an error processing your enrollment.')
+
+    return render(request, "academy/enroll_course.html", {"form": form, "course": course})

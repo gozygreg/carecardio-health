@@ -1,69 +1,75 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
-    <!-- Page Title Starts Here -->
-    <div class="page-nav no-margin row">
-        <div class="container">
-            <div class="row">
-                <h2>Our Academy</h2>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Academy</a></li>
-                    <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
-                </ul>
-            </div>
-        </div>
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- Page Title Starts Here -->
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2>Our Academy</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-home"></i> Academy</a>
+        </li>
+        <li><i class="fas fa-angle-double-right"></i> CareCardio Academy</li>
+      </ul>
     </div>
-    <!-- Page Title End -->
+  </div>
+</div>
+<!-- Page Title End -->
 
-    <div>
-        <img class="d-block w-100" src="{% static 'home/images/CathLabC_arm.jpeg' %}" alt="First slide">
-        <div class="fvgb d-none d-md-block"></div>
+
+<!-- Our Blog Starts Here -->
+<section class="our-blog">
+  <div class="container">
+    <div class="row course-title">
+      <h1>{{ course.title }} Learning Course</h1>
+      <h2>About this course</h2>
+      <p>
+        {{ course.description|safe }}
+      </p>
     </div>
-
-    <!-- Our Blog Starts Here -->
-    <section class="our-blog">
-        <div class="container">
-            <div class="row session-title">
-                <h2>CareCardio Academy</h2>
-                <p>Enhance your skills as an exceptional cath lab staff by enrolling in our comprehensive 6-week Cardiac
-                    Cath Lab Module. Gain the expertise and knowledge required to excel in the field.</p>
-            </div>
-            <div class="blog-row row">
-                <div class="col-lg-6 col-md-12 module-list">
-                    <div class="single-blog">
-                        <figure>
-                            <!-- Add course image here -->
-                            <img src="/" alt="default-image">
-                        </figure>
-                        <div class="blog-detail">
-                            <small>By Admin | August 10, 2018</small>
-                            <h3>Course: {{ course.title }}</h3>
-                            <p>{{ course.description|safe }}</p>
-                            <br>               
-                            <br>
-                            <!-- Enrollment Form -->
-                            <form method="POST" action="{% url 'enroll_course' course.pk %}">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-info">Enroll Now</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-6 col-md-12 module-list">
-                    <h2>Course Modules</h2>
-                    <ul>
-                        {% for module in modules %}
-                            <li>{{ module.title }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-            </div>
-
+    <div class="blog-row row">
+      <div class="col-lg-6 col-md-12 module-list">
+        <div class="single-blog">
+          <div>
+            <!-- Display the course image using Cloudinary -->
+            <img
+              class="d-block w-100"
+              src="{{ course.image.url }}"
+              alt="{{ course.title }}"
+            />
+            <div class="fvgb d-none d-md-block"></div>
+          </div>
+          <div class="blog-detail">
+            <small>By Admin | August 10, 2018</small>
+            
+            <br />
+            <br />
+            <!-- Enrollment Form -->
+            <!-- Check if the course ID is in enrolled_course_ids -->
+            {% if course.id not in enrolled_course_ids %}
+            <!-- Show the "Enroll Now" button only if the user is not enrolled in the course -->
+            <form method="POST" action="{% url 'enroll_course' course.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-info">Enroll Now</button>
+            </form>
+            {% endif %}
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer Starts Here -->
+      <div class="col-lg-6 col-md-12 module-list">
+        <h2>Course Modules</h2>
+        <ul>
+          {% for module in modules %}
+          <!-- Use the URL of the module_detail view for each module -->
+          <li>
+            <a href="{% url 'module_detail' module.id %}">{{ module.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Starts Here -->
 {% endblock %}

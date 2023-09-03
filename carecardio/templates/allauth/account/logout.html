@@ -1,18 +1,66 @@
-{% extends "account/base.html" %} {% load i18n %} {% block head_title %}{% trans
-"Sign Out" %}{% endblock %} {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
+{% extends "account/base.html" %}
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+{% load i18n %}
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %} {% if redirect_field_value %}
-  <input
-    type="hidden"
-    name="{{ redirect_field_name }}"
-    value="{{ redirect_field_value }}"
-  />
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+{% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
+{% block content %}
+<style>
+  body {
+    background-color: grey !important;
+  }
+
+  /* Style for the form container */
+  .form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Style for the buttons and links */
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .button-container a.btn {
+    flex: 1;
+    margin-right: 10px;
+  }
+</style>
+
+<!-- Page Title Section -->
+<div class="page-nav no-margin row">
+    <div class="container">
+        <div class="row">
+          <h2>Account Management</h2>
+            <ul>
+                <li> <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-angle-double-right"></i> Logout</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Sign Out Form Section -->
+<div class="container">
+    <div class="form-container">
+        <h1>{% trans "Sign Out" %}</h1>
+        <p>{% trans 'Are you sure you want to sign out?' %}</p>
+        <br>
+        <form method="post" action="{% url 'account_logout' %}">
+          {% csrf_token %}
+          {% if redirect_field_value %}
+          <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <div class="button-container">
+            <button class="btn btn-info" type="submit">{% trans 'Sign Out' %}</button>
+          </div>
+        </form>
+    </div>
+</div>
+<br>
 {% endblock %}

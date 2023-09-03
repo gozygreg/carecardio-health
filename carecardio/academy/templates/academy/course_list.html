@@ -33,7 +33,11 @@
                <div class="col-md-4 col-sm-6">
                    <div class="single-blog">
                        <figure>
-                        <img src="{% static 'home/images/blog/blog_02.jpg' %}" alt="default-image">
+                        <img
+                        class="d-block w-100"
+                        src="{{ course.image.url }}"
+                        alt="{{ course.title }}"
+                      />
                         
                         <img src="/" alt="">
                         

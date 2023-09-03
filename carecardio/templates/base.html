@@ -1,145 +1,184 @@
 {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Carecardio Health</title>
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title> Carecardio Health</title>
-
-    <link rel="shortcut icon" href="{% static 'home/images/fav.jpg' %}">
-    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/fontawsom-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/animate.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'home/images/fav.jpg' %}" />
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'home/css/fontawsom-all.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'home/css/animate.css' %}" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'home/css/style.css' %}"
+    />
 
     <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
     <!-- Bootsrap Js -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
-</head>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
-
+  <body>
     <!-- ################# Header Starts Here#######################--->
     <header>
-        <div id="nav-head" class="header-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
-                        <a href="{% url 'home' %}">
-                            <img src="{% static 'home/images/carecardiologo.png' %}" alt="company logo">
-                        </a>
-                        <a data-toggle="collapse" data-target="#menu" href="#menu"><i
-                                class="fas d-block d-md-none small-menu fa-bars"></i></a>
-                    </div>
-                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
-                        <ul>
-                            <li><a href="{% url 'home' %}">Home</a></li>
-                            <li><a href="{% url 'about_us' %}">About Us</a></li>
-                            <li><a href="{% url 'services' %}">Services</a></li>
-                            <li><a href="{% url 'post_list' %}">Blog</a></li>
-                            <li><a href="{% url 'course_list' %}">Academy</a></li>
-                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <!-- <button class="btn btn-info">Book an Appointment</button> -->
-                        <a href="{% url 'schedule_appointment' %}" class="btn btn-info">Book an Appointment</a>
-                    </div>
-                </div>
+      <div id="nav-head" class="header-nav">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-2 col-md-3 no-padding col-sm-12 nav-img">
+              <a href="{% url 'home' %}">
+                <img
+                  src="{% static 'home/images/carecardiologo.png' %}"
+                  alt="company logo"
+                />
+              </a>
+              <a data-toggle="collapse" data-target="#menu" href="#menu"
+                ><i class="fas d-block d-md-none small-menu fa-bars"></i
+              ></a>
             </div>
+            <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+              <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'post_list' %}">Blog</a></li>
+                <li><a href="{% url 'course_list' %}">Academy</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'account_signup' %}">Register</a></li>
+                <li><a href="{% url 'account_login' %}">Login</a></li>
+                {% endif %}
+              </ul>
+            </div>
+            <div class="col-sm-2 d-none d-lg-block appoint">
+              <!-- <button class="btn btn-info">Book an Appointment</button> -->
+              <a href="{% url 'schedule_appointment' %}" class="btn btn-info"
+                >Book an Appointment</a
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </header>
     {% if messages %}
     <div class="message-container">
-        {% for message in messages %}
-        <div class="toast">
-            <div class="toast-body">
-                {{ message }}
-            </div>
-        </div>
-        {% endfor %}
+      {% for message in messages %}
+      {% with message.level as level %}
+      {% if level == 40 %}
+      {% include 'includes/toasts/toast_error.html' %}
+      {% elif level == 30 %}
+      {% include 'includes/toasts/toast_warning.html' %}
+      {% elif level == 25 %}
+      {% include 'includes/toasts/toast_success.html' %}
+      {% else %}
+      {% include 'includes/toasts/toast_info.html' %}
+      {% endif %}
+      {% endwith %}
+      {% endfor %}
+  </div>
     </div>
-    {% endif %}
+    {% endif %} {% block content %} {%endblock %}
 
-    {% block page_header %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
-
-
-
-
-</body>
-
-<!-- ################# Footer Starts Here#######################--->
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-sm-12">
-                <h2>About Us</h2>
-                <p>
-                    CareCardio is dedicated to combating cardiovascular disease (CVD), a significant contributor to premature mortality in the UK. Through our specialised cardiac primary care services, CareCardio focuses on early detection and treatment, enabling patients to live healthier and longer lives.
-                </p>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <h2>Useful Links</h2>
-                <ul class="list-unstyled link-list">
-                    <li><a ui-sref="products" href="#/products">Latest jobs</a><i class="fa fa-angle-right"></i>
-                    </li>
-                    <li><a ui-sref="blog" href="blog.html">Blog</a><i class="fa fa-angle-right"></i></li>
-                    <li><a ui-sref="contact" href="#/contact">Contact us</a><i class="fa fa-angle-right"></i></li>
-                </ul>
-            </div>
-            <div class="col-md-4 col-sm-12">
-                <h2>Legals</h2>
-                <ul class="list-unstyled link-list">
-                    <li><a href="/" target="_blank">Privacy policy</a></li>
-                    <li><a href="/" target="_blank">Terms &amp; conditions</a></li>
-                    <li><a href="/" target="_blank">End user license agreement</a></li>
-                    <li><a href="/" target="_blank">Regulatory</a></li>
-                    <li><a href="/">Accessibility statement</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<div class="copy">
-    <div class="container">
-            <div class="Footer_copyrightContainer__RKR0K">© CareCardio 2023 - All rights reserved. </div>
-        <span>
-            <a href="/"><i class="fab fa-instagram"></i></a>
-            <a href="/"><i class="fab fa-twitter"></i></a>
-            <a href="/"><i class="fab fa-facebook-f"></i></a>
-            <a href="/"><i class="fab fa-youtube"></i></a>
-        </span>
-    </div>
+    <!-- ################# Footer Starts Here#######################--->
     <br>
-</div>
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <h2>About Us</h2>
+            <p>
+              CareCardio is dedicated to combating cardiovascular disease (CVD),
+              a significant contributor to premature mortality in the UK.
+              Through our specialised cardiac primary care services, CareCardio
+              focuses on early detection and treatment, enabling patients to
+              live healthier and longer lives.
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <h2>Useful Links</h2>
+            <ul class="list-unstyled link-list">
+              <li>
+                <a ui-sref="products" href="#/products">Latest jobs</a
+                ><i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a ui-sref="blog" href="blog.html">Blog</a
+                ><i class="fa fa-angle-right"></i>
+              </li>
+              <li>
+                <a ui-sref="contact" href="{% url 'contact_us' %}">Contact us</a
+                ><i class="fa fa-angle-right"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <h2>Legals</h2>
+            <ul class="list-unstyled link-list">
+              <li><a href="/" target="_blank">Privacy policy</a></li>
+              <li><a href="/" target="_blank">Terms &amp; conditions</a></li>
+              <li>
+                <a href="/" target="_blank">End user license agreement</a>
+              </li>
+              <li><a href="/" target="_blank">Regulatory</a></li>
+              <li><a href="/">Accessibility statement</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'home/js/popper.min.js' %}"></script>
-<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'home/plugins/scroll-fixed/jquery-scrolltofixed-min.js' %}"></script>
-<script src="{% static 'home/js/script.js' %}"></script>
-<script>
-    $(document).ready(function () {
-        $('.toast').toast('show');
-    });
-</script>
+    <div class="copy">
+      <div class="container">
+        <div class="Footer_copyrightContainer__RKR0K">
+          © CareCardio 2023 - All rights reserved.
+        </div>
+        <span>
+          <a href="/"><i class="fab fa-instagram"></i></a>
+          <a href="/"><i class="fab fa-twitter"></i></a>
+          <a href="/"><i class="fab fa-facebook-f"></i></a>
+          <a href="/"><i class="fab fa-youtube"></i></a>
+        </span>
+      </div>
+      <br />
+    </div>
 
-
+    <script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'home/js/popper.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'home/plugins/scroll-fixed/jquery-scrolltofixed-min.js' %}"></script>
+    <script src="{% static 'home/js/script.js' %}"></script>
+    <script type="text/javascript">
+      $(".toast").toast("show");
+    </script>
+  </body>
 </html>

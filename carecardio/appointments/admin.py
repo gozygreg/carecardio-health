@@ -3,24 +3,15 @@ from .models import Clincian, Patient, Appointment
 
 
 class ClincianAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-    )
+    list_display = ("name",)
 
 
 class PatientAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-    )
+    list_display = ("name",)
 
 
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = (
-        'clinician',
-        'patient',
-        'date',
-        'time'
-    )
+    list_display = ("clinician", "patient", "date", "time")
 
 
 admin.site.register(Clincian, ClincianAdmin)

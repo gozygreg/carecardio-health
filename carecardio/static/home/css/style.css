@@ -19,6 +19,7 @@ Description: This Template is created for web template
   padding: 0px;
   list-style: none; }
 
+
 img {
   max-width: 100%; }
 
@@ -107,6 +108,24 @@ body {
     margin: auto; }
   .session-title span {
     float: right;
+    font-style: italic; }
+
+.course-title {
+  padding-bottom: 20px;
+  margin: 0px; }
+  .course-title h1 {
+    padding-bottom: 20px;
+  }
+  .course-title h2 {
+    width: 100%;
+    text-align: left; }
+  .course-title p {
+    max-width: 850px;
+    text-align: left;
+    float: none;
+    margin: 0px; }
+  .course-title span {
+    float: left;
     font-style: italic; }
 
 .inner-title {
@@ -201,6 +220,20 @@ body {
   cursor: pointer;
 }
 
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 = 0.5625) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 @media screen and (max-width: 1199px) {
   .container {
@@ -244,10 +277,11 @@ header {
     float: left;
     font-family: "mouse-500", Arial, Helvetica, sans-serif;
     font-size: 16px;
-    padding: 28px; }
+    padding: 25px; }
     @media screen and (max-width: 916px) {
       header .header-nav .nav-item ul li {
-        padding: 30px 18px; } }
+        padding: 25px 18px; } }
+        
     @media screen and (max-width: 767px) {
       header .header-nav .nav-item ul li {
         float: none;
@@ -565,5 +599,64 @@ header {
 
 .ky2 {
   background-color: #FAFAFA; }
+/* Convenience classes - colors copied from Bootstrap */
+
+  /* ===================================== Toast Css  ================================== */
+
+  .custom-toast {
+    position: absolute;
+    top: 87px; /* Adjust this value to position it below the site logo */
+    left: 91px; /* Adjust this value to position it to the left */
+    overflow: visible;
+    z-index: 9999;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 10px solid black;
+  position: absolute;
+  top: -10px;
+  right: 36px;
+}
+
+.arrow-primary {
+  border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+  border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+  border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+  border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+  border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+  border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+  border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+  border-bottom-color: #343a40 !important;
+}
 
 /*# sourceMappingURL=style.css.map */
