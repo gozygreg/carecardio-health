@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Clincian(models.Model):
     name = models.CharField(max_length=100)
     # Add more fields as per your requirements
@@ -9,7 +10,7 @@ class Clincian(models.Model):
     def __str__(self):
         return self.name
 
-
+  
 class Patient(models.Model):
     name = models.CharField(max_length=100, default=None)
     # Add more fields as per your requirements

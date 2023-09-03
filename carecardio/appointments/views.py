@@ -5,14 +5,14 @@ from .forms import AppointmentForm
 from .models import Clincian, Appointment
 
 
-# @login_required
+@login_required
 def schedule_appointment(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST)
         if form.is_valid():
-            # appointment = form.save(commit=False)
-            # appointment.patient = request.user.patient
-            # appointment.save()
+            appointment = form.save(commit=False)
+            appointment.patient = request.user.patient
+            appointment.save()
             form.save()
             return redirect("appointments/appointments_list")
     else:
@@ -20,7 +20,7 @@ def schedule_appointment(request):
     return render(request, "appointments/schedule_appointment.html", {"form": form})
 
 
-# @login_required
+@login_required
 def appointment(request):
     if request.method == "POST":
         your_name = request.POST["your-name"]
@@ -33,20 +33,13 @@ def appointment(request):
 
         # send an email
         appointment = (
-            "Name: "
-            + your_name
-            + " Phone: "
-            + your_phone
-            + " Email: "
-            + your_email
-            + " Address: "
-            + your_address
-            + " Schedule: "
-            + your_schedule
-            + "Day : "
-            + your_date
-            + "Message: "
-            + your_message
+            f"Name: {your_name}\n"
+            f"Phone: {your_phone}\n"
+            f"Email: {your_email}\n"
+            f"Address: {your_address}\n"
+            f"Schedule: {your_schedule}\n"
+            f"Day: {your_date}\n"
+            f"Message: {your_message}" 
         )
 
         send_mail(
@@ -74,7 +67,7 @@ def appointment(request):
         return render(request, "home/index.html")
 
 
-# @login_required
+@login_required
 def available_clinician(request):
     doctors = Clinician.objects.all()
     return render(

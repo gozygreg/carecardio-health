@@ -71,7 +71,9 @@
                 <li><a href="{% url 'about_us' %}">About Us</a></li>
                 <li><a href="{% url 'services' %}">Services</a></li>
                 <li><a href="{% url 'post_list' %}">Blog</a></li>
+                {% if request.user.is_authenticated %}
                 <li><a href="{% url 'course_list' %}">Academy</a></li>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                 <li><a href="{% url 'account_logout' %}">Logout</a></li>
                 {% else %}

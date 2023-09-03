@@ -389,7 +389,6 @@ header {
       .with-medical .txtr h4 span {
         color: #03509e; }
     .with-medical .txtr p {
-      text-indent: 20px;
       font-size: 1.1rem; }
 
 /* ===================================== Our Team CSS ================================== */
@@ -463,8 +462,7 @@ header {
     font-size: 26px;
     margin-top: 10px; }
   .footer p {
-    text-align: justify;
-    text-indent: 20px; }
+    text-align: left;}
   .footer .link-list li {
     padding: 10px;
     border-bottom: 1px solid #6C6C6C; }
@@ -532,8 +530,7 @@ header {
   .about-us h2 {
     font-size: 22px; }
   .about-us p {
-    text-align: justify;
-    text-indent: 20px; }
+    text-align: justify;}
 
 .kf-2 {
   background-color: #FCFCFC; }
