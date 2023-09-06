@@ -69,7 +69,7 @@ def appointment(request):
 
 @login_required
 def available_clinician(request):
-    doctors = Clinician.objects.all()
+    clinicians = Clincian.objects.all()
     return render(
-        request, "appointments/available_clinician.html", {"clinician": clinician}
+        request, "appointments/available_clinician.html", {"clinicians": clinicians}
     )
