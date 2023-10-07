@@ -31,11 +31,11 @@ DEBUG = "DEVELOPMENT" in os.environ
 DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu104.gitpod.io",
+    "https://8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu105.gitpod.io",
 ]
 
 ALLOWED_HOSTS = [
-    "8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu104.gitpod.io",
+    "8000-gozygreg-carecardioheal-slkutfp5lme.ws-eu105.gitpod.io",
 ]
 
 # Application definition

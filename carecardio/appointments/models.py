@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 class Clincian(models.Model):
     name = models.CharField(max_length=100)
+    description = models.TextField(default="")
+    email = models.EmailField(default=None)
     # Add more fields as per your requirements
 
     def __str__(self):

@@ -3,7 +3,7 @@ from .models import Clincian, Patient, Appointment
 
 
 class ClincianAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "description", "email")
 
 
 class PatientAdmin(admin.ModelAdmin):
