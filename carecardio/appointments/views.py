@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from .forms import AppointmentForm
 from .models import Clincian, Appointment
+from django.contrib import messages
 
 
 @login_required
@@ -23,53 +24,45 @@ def schedule_appointment(request):
 @login_required
 def appointment(request):
     if request.method == "POST":
-        your_name = request.POST["your-name"]
-        your_email = request.POST["your-email"]
-        your_phone = request.POST["your-phone"]
-        your_address = request.POST["your-address"]
-        your_schedule = request.POST["your-schedule"]
-        your_date = request.POST["your-date"]
-        your_message = request.POST["your-message"]
+        form = AppointmentForm(request.POST)
 
-        # send an email
-        appointment = (
-            f"Name: {your_name}\n"
-            f"Phone: {your_phone}\n"
-            f"Email: {your_email}\n"
-            f"Address: {your_address}\n"
-            f"Schedule: {your_schedule}\n"
-            f"Day: {your_date}\n"
-            f"Message: {your_message}" 
-        )
+        if form.is_valid():
+            appointment = form.save(commit=False)
+            appointment.patient = request.user.patient
+            appointment.save()
 
-        send_mail(
-            "Appointment Request",
-            appointment,  # message
-            your_email,  # from email
-            ["gregmeditechinc@gmail.com"],  # to email
-        )
+            appointment_info = {
+                "Name": form.cleaned_data["your_name"],
+                "Phone": form.cleaned_data["your_phone"],
+                "Email": form.cleaned_data["your_email"],
+                "Address": form.cleaned_data["your_address"],
+                "Schedule": form.cleaned_data["your_schedule"],
+                "Day": form.cleaned_data["your_date"],
+                "Message": form.cleaned_data["your_message"],
+                "Appointment Date": appointment.date,
+                "Appointment Time": appointment.time,
+            }
 
-        return render(
-            request,
-            "appointments/appointment.html",
-            {
-                "your_name": your_name,
-                "your_phone": your_phone,
-                "your_email": your_email,
-                "your_address": your_address,
-                "your_schedule": your_schedule,
-                "your_date": your_date,
-                "your_message": your_message,
-            },
-        )
+            message = "\n".join(
+                [f"{key}: {value}" for key, value in appointment_info.items()])
 
-    else:
-        return render(request, "home/index.html")
+            send_mail(
+                "Appointment Request",
+                message,
+                form.cleaned_data["your_email"],
+                ["gregmeditechinc@gmail.com"],
+                fail_silently=False,
+            )
+
+            return render(request, "appointments/appointment.html", appointment_info)
+
+    return render(request, "home/index.html")
 
 
 @login_required
 def available_clinician(request):
     clinicians = Clincian.objects.all()
     return render(
-        request, "appointments/available_clinician.html", {"clinicians": clinicians}
+        request, "appointments/available_clinician.html", {
+            "clinicians": clinicians}
     )
