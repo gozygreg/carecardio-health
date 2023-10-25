@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2>Appointment</h2>
+      <ul>
+        <li>
+          <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <i class="fas fa-angle-double-right"></i> Your appointment has been
+          created successfully
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- 
+<section class="with-medical">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 txtr text-left">
+        <h3>Review Your Information</h3>
+        <p><strong>Your Name:</strong> {{ your_name }}</p>
+        <p><strong>Email:</strong> {{ your_email }}</p>
+        <p><strong>Phone Number:</strong> {{ your_phone }}</p>
+        <p><strong>Address: </strong>{{ your_address }}</p>
+        <p><strong>When: </strong> {{ your_schedule }}</p>
+        <p><strong>Appointment Day: </strong> {{ your_date }}</p>
+        <p><strong>Your Message:</strong> {{ your_message }}</p>
+        <br />
+        <p>We will contact you shortly to confirm your appointment</p>
+      </div>
+
+      <div class="col-lg-6 col-md-12">
+        <img src="{% static 'home/images/why.jpg' %}" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="alert alert-danger">
+        <h4>Errors in your submission:</h4>
+        <ul>
+          {% for field in form %} {% for error in field.errors %}
+          <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %} {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> -->
+{% endblock %}

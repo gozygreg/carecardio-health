@@ -1,84 +1,116 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 <div class="page-nav no-margin row">
-    <div class="container">
-        <div class="row">
-            <h2>Book An Appointment</h2>
-            <ul>
-                <li> <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
-                <li> <a href="{% url 'available_clinician' %}"><i class="fas fa-user-md"></i> Clinican profile</a></li>
-                <li><i class="fas fa-angle-double-right"></i> Book An Appointment</li>
-            </ul>
-        </div>
+  <div class="container">
+    <div class="row">
+      <h2>Book An Appointment</h2>
+      <ul>
+        <li>
+          <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li>
+          <a href="{% url 'available_clinician' %}"
+            ><i class="fas fa-user-md"></i> Clinican profile</a
+          >
+        </li>
+        <li><i class="fas fa-angle-double-right"></i> Book An Appointment</li>
+      </ul>
     </div>
+  </div>
 </div>
 
-
-
 <section class="with-medical">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 txtr">
-                <form action="{% url 'appointment' %}" method="post">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <input type="text" name="your-name" class="form-control" placeholder="your-name" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <input type="text" name="your-phone" class="form-control" placeholder="your-phone" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <input type="email" name="your-email" class="form-control" placeholder="your-email" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <input type="text" name="your-address" class="form-control" placeholder="your-address" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <select name="your-schedule" class="form-control">
-                                    <option value="Choose Your Schedule">Choose Your Schedule</option>
-                                    <option value="9am">9am</option>
-                                    <option value="11am">11am</option>
-                                    <option value="2pm">2pm</option>
-                                    <option value="4pm">4pm</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-30">
-                                <!-- <label for="id_your_date">Choose Your Date</label> -->
-                                {{ form.your_date }}
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group mb-30">
-                                <textarea name="your-message" class="form-control" placeholder="your-message" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12 text-center">
-                            <button type="submit" class="btn btn-info">Schedule Appointment</button>
-                        </div>
-                    </div>
-                  </form>
-            </div>   
-            <div class="col-lg-6 col-md-12">
-                <img src="{% static 'home/images/why.jpg' %}" alt="">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 txtr">
+        <form action="{% url 'schedule_appointment' %}" method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <input
+                  type="text"
+                  name="your-name"
+                  class="form-control"
+                  placeholder="your-name"
+                  required
+                />
+              </div>
             </div>
-        </div>
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <input
+                  type="text"
+                  name="your-phone"
+                  class="form-control"
+                  placeholder="your-phone"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <input
+                  type="email"
+                  name="your-email"
+                  class="form-control"
+                  placeholder="your-email"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <input
+                  type="text"
+                  name="your-address"
+                  class="form-control"
+                  placeholder="your-address"
+                  required
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <select name="your-schedule" class="form-control">
+                  <option value="Choose Your Schedule">
+                    Choose Your Schedule
+                  </option>
+                  <option value="9am">9am</option>
+                  <option value="11am">11am</option>
+                  <option value="2pm">2pm</option>
+                  <option value="4pm">4pm</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-30">
+                <!-- <label for="id_your_date">Choose Your Date</label> -->
+                {{ form.your_date }}
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group mb-30">
+                <textarea
+                  name="your-message"
+                  class="form-control"
+                  placeholder="your-message"
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-info">
+                Schedule Appointment
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <img src="{% static 'home/images/why.jpg' %}" alt="" />
+      </div>
     </div>
+  </div>
 </section>
-
-    
 
 {% endblock %}

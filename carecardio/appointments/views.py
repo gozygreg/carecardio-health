@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from .forms import AppointmentForm
 from .models import Clincian, Appointment
 from django.contrib import messages
+from django.http import HttpResponse
 
 
 @login_required
@@ -54,9 +55,13 @@ def appointment(request):
                 fail_silently=False,
             )
 
-            return render(request, "appointments/appointment.html", appointment_info)
-
-    return render(request, "home/index.html")
+            template = loader.get_template(
+                "appointments/appointment_success.html")
+            # Render the success template
+            return HttpResponse(template.render())
+    else:
+        form = AppointmentForm()
+    return render(request, "appointments/schedule_appointment.html", {"form": form})
 
 
 @login_required

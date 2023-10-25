@@ -11,9 +11,11 @@ class PatientAdmin(admin.ModelAdmin):
 
 
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ("clinician", "patient", "date", "time", "year")  # Add "year" to the list
+    list_display = ("clinician", "patient", "date", "time",
+                    "year")  # Add "year" to the list
 
-    search_fields = ("patient__name", "clinician__name")  # Add search fields for patient and clinician names
+    # Add search fields for patient and clinician names
+    search_fields = ("patient__name", "clinician__name")
 
 
 admin.site.register(Clincian, ClincianAdmin)
