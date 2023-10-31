@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     "django_summernote",
     "corsheaders",
     "home",
-    "appointments",
     "carecardioblog",
     "academy",
     "crispy_forms",
