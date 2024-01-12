@@ -1,6 +1,35 @@
-<h2>Appointment List</h2>
-<ul>
-  {% for appointment in appointments %}
-  <li>{{ appointment }}</li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="page-nav no-margin row">
+  <div class="container">
+    <div class="row">
+      <h2>Appointment Lists</h2>
+      <ul>
+        <li>
+          <a href="/"><i class="fas fa-home"></i> Home </a>
+        </li>
+        <li>
+          <i class="fas fa-angle-double-right"></i> List of scheduled
+          appointments
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="our-blog">
+  <div class="container">
+    <div class="row session-title">
+      <h2>Appointments</h2>
+      <p>See list of scheduled appointments</p>
+    </div>
+    <div class="blog-row row">
+      <ul>
+        {% for appointment in appointments %}
+        <li>{{ appointment }}</li>
+        {% endfor %}
+      </ul>
+  </div>
+</section>
+
+{% endblock %}

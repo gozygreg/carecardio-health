@@ -84,10 +84,17 @@
             </div>
             <div class="col-sm-2 d-none d-lg-block appoint">
               <!-- <button class="btn btn-info">Book an Appointment</button> -->
-              <a href="/" class="btn btn-info"
+              <a href="{% url 'create_appointment' %}" class="btn btn-info"
                 >Book an Appointment</a
               >
             </div>
+            {% if user.is_staff %}
+            <div class="col-sm-2 d-none d-lg-block appoint-list">
+              <a href="{% url 'appointment_list' %}" class="btn btn-info">
+                  Appointment List
+              </a>
+          </div>
+          {% endif %}
           </div>
         </div>
       </div>

@@ -1,7 +1,10 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render, redirect
 from .models import Appointment
 from .forms import AppointmentForm
 
+
+@staff_member_required
 def appointment_list(request):
     appointments = Appointment.objects.all()
     return render(request, 'appointment/appointment_list.html', {'appointments': appointments})
